@@ -42,6 +42,13 @@ inline namespace v1 {
 //----------------------------------------------------------------------------
 
 /* Panel init */
+
+  void Panel_RM690B0::writeRegister(uint16_t cmd, uint8_t data)
+  {
+    writeCommand(getSwap16(cmd), 2);
+    writeData(data, 1);
+  }
+  
 bool Panel_RM690B0::init(bool use_reset) {
   // ESP_LOGD("SH8601Z","pannel init %d", use_reset);
 
