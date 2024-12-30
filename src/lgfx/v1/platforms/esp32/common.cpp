@@ -565,19 +565,19 @@ namespace lgfx
       if (spi_sclk >= 0) {
         gpio_lo(spi_sclk); // ここでLOWにしておくことで、pinMode変更によるHIGHパルスが出力されるのを防止する (CSなしパネル対策);
       }
-#if defined (ARDUINO) // Arduino ESP32
-      if (spi_host == default_spi_host)
-      {
-        SPI.end();
-        SPI.begin(spi_sclk, spi_miso, spi_mosi);
-        _spi_handle[spi_host] = SPI.bus();
-      }
-      if (_spi_handle[spi_host] == nullptr)
-      {
-        _spi_handle[spi_host] = spiStartBus(spi_port, SPI_CLK_EQU_SYSCLK, 0, 0);
-      }
+// #if defined (ARDUINO) // Arduino ESP32
+//       if (spi_host == default_spi_host)
+//       {
+//         SPI.end();
+//         SPI.begin(spi_sclk, spi_miso, spi_mosi);
+//         _spi_handle[spi_host] = SPI.bus();
+//       }
+//       if (_spi_handle[spi_host] == nullptr)
+//       {
+//         _spi_handle[spi_host] = spiStartBus(spi_port, SPI_CLK_EQU_SYSCLK, 0, 0);
+//       }
 
-#endif
+// #endif
 
  // バスの設定にはESP-IDFのSPIドライバを使用する。;
       if (_spi_dev_handle[spi_host] == nullptr)
