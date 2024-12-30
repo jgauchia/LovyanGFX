@@ -15,7 +15,7 @@
  * [mongonta0716](https://github.com/mongonta0716)
  * [tobozo](https://github.com/tobozo)
  * /----------------------------------------------------------------------------*/
-#include "Panel_SH8601Z.hpp"
+#include "Panel_RM690B0.hpp"
 #include "../Bus.hpp"
 #include "../platforms/common.hpp"
 #include "../misc/pixelcopy.hpp"
