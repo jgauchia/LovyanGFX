@@ -43,7 +43,7 @@ namespace lgfx
         //----------------------------------------------------------------------------
 
         /* Panel init */
-        bool Panel_SH8601Z::init(bool use_reset)
+        bool Panel_RM690B0::init(bool use_reset)
         {
             // ESP_LOGD("SH8601Z","pannel init %d", use_reset);
 
@@ -127,7 +127,7 @@ namespace lgfx
 
 
 
-        void Panel_SH8601Z::setBrightness(uint8_t brightness)
+        void Panel_RM690B0::setBrightness(uint8_t brightness)
         {
             // ESP_LOGD("SH8601Z","setBrightness %d", brightness);
 
@@ -144,7 +144,7 @@ namespace lgfx
         }
 
 
-        void Panel_SH8601Z::setRotation(uint_fast8_t r)
+        void Panel_RM690B0::setRotation(uint_fast8_t r)
         {
             // ESP_LOGD("SH8601Z","setRotation %d", r);
 
@@ -179,7 +179,7 @@ namespace lgfx
         }
 
 
-        void Panel_SH8601Z::setInvert(bool invert)
+        void Panel_RM690B0::setInvert(bool invert)
         {
             // ESP_LOGD("SH8601Z","setInvert %d", invert);
 
@@ -199,7 +199,7 @@ namespace lgfx
         }
 
 
-        void Panel_SH8601Z::setSleep(bool flg)
+        void Panel_RM690B0::setSleep(bool flg)
         {
             // ESP_LOGD("SH8601Z","setSleep %d", flg);
 
@@ -220,26 +220,26 @@ namespace lgfx
         }
 
 
-        void Panel_SH8601Z::setPowerSave(bool flg)
+        void Panel_RM690B0::setPowerSave(bool flg)
         {
             // ESP_LOGD("SH8601Z","setPowerSave");
         }
 
 
-        void Panel_SH8601Z::waitDisplay(void)
+        void Panel_RM690B0::waitDisplay(void)
         {
             // ESP_LOGD("SH8601Z","waitDisplay");
         }
 
 
-        bool Panel_SH8601Z::displayBusy(void)
+        bool Panel_RM690B0::displayBusy(void)
         {
             // ESP_LOGD("SH8601Z","displayBusy");
             return false;
         }
 
 
-        color_depth_t Panel_SH8601Z::setColorDepth(color_depth_t depth)
+        color_depth_t Panel_RM690B0::setColorDepth(color_depth_t depth)
         {
             // ESP_LOGD("SH8601Z","setColorDepth %d", depth);
 
@@ -276,7 +276,7 @@ namespace lgfx
         }
 
 
-        void Panel_SH8601Z::write_cmd(uint8_t cmd)
+        void Panel_RM690B0::write_cmd(uint8_t cmd)
         {
             uint8_t cmd_buffer[4] = {0x02, 0x00, 0x00, 0x00};
             cmd_buffer[2] = cmd;
@@ -287,7 +287,7 @@ namespace lgfx
         }
 
 
-        void Panel_SH8601Z::start_qspi()
+        void Panel_RM690B0::start_qspi()
         {
             /* Begin QSPI */
             cs_control(false);
@@ -298,7 +298,7 @@ namespace lgfx
             _bus->wait();
         }
 
-        void Panel_SH8601Z::end_qspi()
+        void Panel_RM690B0::end_qspi()
         {
             /* Stop QSPI */
             _bus->writeCommand(0x32, 8);
@@ -310,7 +310,7 @@ namespace lgfx
         }
 
 
-        void Panel_SH8601Z::beginTransaction(void)
+        void Panel_RM690B0::beginTransaction(void)
         {
             // ESP_LOGD("SH8601Z","beginTransaction");
             if (_in_transaction) return;
@@ -319,7 +319,7 @@ namespace lgfx
         }
 
 
-        void Panel_SH8601Z::endTransaction(void)
+        void Panel_RM690B0::endTransaction(void)
         {
             // ESP_LOGD("SH8601Z","endTransaction");
             // if (!_in_transaction) return;
@@ -339,7 +339,7 @@ namespace lgfx
         }
 
 
-        void Panel_SH8601Z::write_bytes(const uint8_t* data, uint32_t len, bool use_dma)
+        void Panel_RM690B0::write_bytes(const uint8_t* data, uint32_t len, bool use_dma)
         {
             start_qspi();
             _bus->writeBytes(data, len, true, use_dma);
@@ -348,7 +348,7 @@ namespace lgfx
         }
 
 
-        void Panel_SH8601Z::setWindow(uint_fast16_t xs, uint_fast16_t ys, uint_fast16_t xe, uint_fast16_t ye)
+        void Panel_RM690B0::setWindow(uint_fast16_t xs, uint_fast16_t ys, uint_fast16_t xe, uint_fast16_t ye)
         {
             // ESP_LOGD("SH8601Z","setWindow %d %d %d %d", xs, ys, xe, ye);
 
@@ -384,7 +384,7 @@ namespace lgfx
         }
 
 
-        void Panel_SH8601Z::writeBlock(uint32_t rawcolor, uint32_t len)
+        void Panel_RM690B0::writeBlock(uint32_t rawcolor, uint32_t len)
         {
             // ESP_LOGD("SH8601Z","writeBlock 0x%lx %ld", rawcolor, len);
 
@@ -398,7 +398,7 @@ namespace lgfx
 
 
 
-        void Panel_SH8601Z::writePixels(pixelcopy_t* param, uint32_t len, bool use_dma)
+        void Panel_RM690B0::writePixels(pixelcopy_t* param, uint32_t len, bool use_dma)
         {
             // ESP_LOGD("SH8601Z","writePixels %ld %d", len, use_dma);
 
@@ -419,7 +419,7 @@ namespace lgfx
         }
 
 
-        void Panel_SH8601Z::drawPixelPreclipped(uint_fast16_t x, uint_fast16_t y, uint32_t rawcolor)
+        void Panel_RM690B0::drawPixelPreclipped(uint_fast16_t x, uint_fast16_t y, uint32_t rawcolor)
         {
             // ESP_LOGD("SH8601Z","drawPixelPreclipped %d %d 0x%lX", x, y, rawcolor);
 
@@ -435,7 +435,7 @@ namespace lgfx
         }
 
 
-        void Panel_SH8601Z::writeFillRectPreclipped(uint_fast16_t x, uint_fast16_t y, uint_fast16_t w, uint_fast16_t h, uint32_t rawcolor)
+        void Panel_RM690B0::writeFillRectPreclipped(uint_fast16_t x, uint_fast16_t y, uint_fast16_t w, uint_fast16_t h, uint32_t rawcolor)
         {
             // ESP_LOGD("SH8601Z","writeFillRectPreclipped %d %d %d %d 0x%lX", x, y, w, h, rawcolor);
 
@@ -454,7 +454,7 @@ namespace lgfx
 
 
 
-        void Panel_SH8601Z::writeImage(uint_fast16_t x, uint_fast16_t y, uint_fast16_t w, uint_fast16_t h, pixelcopy_t* param, bool use_dma)
+        void Panel_RM690B0::writeImage(uint_fast16_t x, uint_fast16_t y, uint_fast16_t w, uint_fast16_t h, pixelcopy_t* param, bool use_dma)
         {
             // ESP_LOGD("SH8601Z","writeImage %d %d %d %d %d", x, y, w, h, use_dma);
             // use_dma = false;
@@ -573,19 +573,19 @@ namespace lgfx
 
 
 
-        uint32_t Panel_SH8601Z::readCommand(uint_fast16_t cmd, uint_fast8_t index, uint_fast8_t len)
+        uint32_t Panel_RM690B0::readCommand(uint_fast16_t cmd, uint_fast8_t index, uint_fast8_t len)
         {
             // ESP_LOGD("SH8601Z","readCommand");
             return 0;
         }
 
-        uint32_t Panel_SH8601Z::readData(uint_fast8_t index, uint_fast8_t len)
+        uint32_t Panel_RM690B0::readData(uint_fast8_t index, uint_fast8_t len)
         {
             // ESP_LOGD("SH8601Z","readData");
             return 0;
         }
 
-        void Panel_SH8601Z::readRect(uint_fast16_t x, uint_fast16_t y, uint_fast16_t w, uint_fast16_t h, void* dst, pixelcopy_t* param)
+        void Panel_RM690B0::readRect(uint_fast16_t x, uint_fast16_t y, uint_fast16_t w, uint_fast16_t h, void* dst, pixelcopy_t* param)
         {
             // ESP_LOGD("SH8601Z","readRect");
         }

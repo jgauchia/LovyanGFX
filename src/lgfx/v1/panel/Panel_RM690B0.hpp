@@ -25,10 +25,10 @@ namespace lgfx
     {
         //----------------------------------------------------------------------------
 
-        struct Panel_SH8601Z : public Panel_Device
+        struct Panel_RM690B0 : public Panel_Device
         {
         public:
-            Panel_SH8601Z(void) {}
+            Panel_RM690B0(void) {}
 
             bool init(bool use_reset) override;
             void beginTransaction(void) override;
