@@ -61,7 +61,7 @@ namespace lgfx
 
         protected:
             bool _in_transaction = false;
-
+            void writeRegister(uint16_t cmd, uint8_t data);
             void write_cmd(uint8_t cmd);
             void start_qspi();
             void end_qspi();
